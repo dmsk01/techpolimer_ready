@@ -194,6 +194,9 @@ const tabClick = (container, itemClass) => {
           tabs_blocks[index].classList.remove("_active");
           activeIndex = index;
         }
+        const select = document.querySelector(".select__title .select__value span");
+        select.innerText = tabs_item.innerText;
+        
         tabs_item.classList.add("_active");
         tabs_blocks[index].classList.add("_active");
         e.preventDefault();
@@ -555,6 +558,17 @@ function select_actions(original, select) {
         const el = select_options[index];
         el.style.display = "block";
       }
+
+      // Tab sync =============================
+      const target_tab_index = Array.from(select_options).indexOf(select_option);
+      const tabs = document.querySelectorAll("[data-tab]");
+      for (let index = 0; index < tabs.length; index++) {
+        const el = tabs[index];
+        el.classList.remove("_active");
+        el.getAttribute("data-tab") == target_tab_index ? el.classList.add("_active") : null;
+      }
+      // =======================================
+
       if (select_type == "input") {
         select_input.value = select_option_text;
         original.value = select_option_value;
@@ -564,6 +578,7 @@ function select_actions(original, select) {
           selectMultiItems();
         } else {
           select.querySelector(".select__value").innerHTML = "<span>" + select_option_text + "</span>";
+          console.log(select_option_text);
           original.value = select_option_value;
           select_option.style.display = "none";
         }
