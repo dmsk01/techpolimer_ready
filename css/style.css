@@ -211,30 +211,40 @@ body._lock {
 }
 
 .btn_file {
+  padding: 0;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #ebebeb;
   color: #1a1a1a;
   cursor: pointer;
+  position: relative;
+  background-color: #ebebeb;
+}
+
+.btn_file input {
+  padding: 10px 15px 10px 40px;
+  position: relative;
+  background-color: transparent;
+  z-index: 3;
 }
 
 .btn_file::before {
   content: "";
   display: inline-block;
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  z-index: 2;
   width: 20px;
   height: 20px;
   background: url("../img/icons/pdf_icon.svg") center no-repeat;
   margin-right: 5px;
-}
-
-.btn_file img {
-  margin-right: 5px;
-  width: 20px;
-  height: 20px;
 }
 
 .btn:disabled {
