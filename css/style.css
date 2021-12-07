@@ -331,6 +331,21 @@ body._lock {
   background: url("../img/icons/select_arrow.svg") center/100% no-repeat;
 }
 
+.select__value::after {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 50%;
+  background-color: #00a6ed;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  z-index: 1;
+}
+
 .select__input {
   width: 100%;
   background-color: transparent;
@@ -1617,12 +1632,6 @@ body.ie ._ibg img {
   position: relative;
 }
 
-.slide-interface img {
-  border-radius: 14px;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
 .slide-interface__image {
   max-width: 810px;
   width: 100%;
@@ -1634,6 +1643,10 @@ body.ie ._ibg img {
   margin-bottom: 100px;
 }
 
+.slide-interface__big-img {
+  border-radius: 15px;
+}
+
 .slide-interface__small-img {
   position: absolute;
   right: 0;
@@ -1641,6 +1654,18 @@ body.ie ._ibg img {
   -webkit-transform: translate(140px, -50px);
       -ms-transform: translate(140px, -50px);
           transform: translate(140px, -50px);
+  width: 181px;
+  height: 322px;
+  border: 3px solid #2a323b;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.slide-interface__small-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .slide-interface__description {
@@ -2709,12 +2734,21 @@ body.ie ._ibg img {
 }
 
 @media (max-width: 768px) {
-  .slide-interface__small-img {
+  .slide-interface__big-img {
     display: none;
   }
 
+  .slide-interface__small-img {
+    display: block;
+    position: static;
+    margin: 0 auto;
+    max-width: none;
+    width: calc(78vw - 6px);
+    height: auto;
+  }
+
   .arrows-interface {
-    margin-top: -110px;
+    margin-top: -300px;
   }
 }
 
@@ -2791,6 +2825,10 @@ body.ie ._ibg img {
   .interface {
     padding-left: 20px;
     padding-right: 20px;
+  }
+
+  .slide-interface__big-img {
+    border-radius: 10px;
   }
 
   .slide-interface__description {
@@ -2892,6 +2930,10 @@ body.ie ._ibg img {
 }
 
 @media (max-width: 600px) {
+  .arrows-interface {
+    margin-top: -220px;
+  }
+
   .news__body {
     -ms-grid-columns: (minmax(280px, 1fr))[1];
     grid-template-columns: repeat(1, minmax(280px, 1fr));
@@ -2899,23 +2941,12 @@ body.ie ._ibg img {
 }
 
 @media (max-width: 540px) {
-  .slide-interface img {
-    border-radius: 30px;
-  }
-
   .slide-interface__image {
     padding-bottom: 0;
   }
 
-  .slide-interface__big-img {
-    display: none;
-  }
-
-  .slide-interface__small-img {
-    display: block;
-    position: static;
-    width: 75vw;
-    margin: 0 auto;
+  .arrows-interface {
+    margin-top: -80px;
   }
 }
 
@@ -2928,12 +2959,6 @@ body.ie ._ibg img {
     -webkit-box-flex: 1;
         -ms-flex: 1 1 auto;
             flex: 1 1 auto;
-  }
-}
-
-@media (max-width: 500px) {
-  .arrows-interface {
-    margin-top: -70px;
   }
 }
 
@@ -3003,11 +3028,5 @@ body.ie ._ibg img {
 
   .news__title {
     margin-bottom: 10px;
-  }
-}
-
-@media (max-width: 440px) {
-  .slide-interface img {
-    border-radius: 24px;
   }
 }
